@@ -1,71 +1,100 @@
+<?php
+session_start();
+error_reporting(0);
+include('includes/dbconnection.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Schorlarship</title>
-    <link rel="stylesheet" href="css/style.css">
-   
-</head>
-<body >
-    <section>
-
-        <nav>
-            <h1>Scholarship</h1>
-            <div class="navlink">
-
-                <ul>
-                    <li><a href="index.php">Home</a></li>
-                   <li><a href="login.php">Login</a></li>
-                     <li><a href="registration.php">Registration</a></li>
-                </ul>
-            </div>
-        </nav>
-    </section>
+  <head>
+    <title>Scholarship Management System | About Us Page</title>
     
-       <section>
-           <div class="main">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
 
-            <div class="sub">
-                <b>Education is the basic right of all children</b>
-            </div>
-            
-            <div class="info"><p>About</p>
-                        &#10148 There are many students who due to their financial condition cannot be able to continue with their education. For all those students the Government of Karnataka has launched the  Scholarship scheme for providing various kinds of scholarships to all the eligible and capable students of Karnataka. All The eligible categories of students can apply through this portal. The application procedure has been made very simple through this portal. Scholarship portal has various kinds of welfare departments for various categories of students.
-                           
-                        </div>
-                        <div class="info"><p>Objective Of Scholarship Scheme</p>
-                             &#10148 The main objective of the Scholarship is to provide financial assistance to all those students who cannot be able to afford their education because of their financial conditions. Now all the students of Karnataka will get the basic right of education.
-                        </div>
-                   
-                <div class="info"><p>Eligibility</p>
-                    <ul>
-                        <li>Student of <strong>Backward caste , Minority , OBC</strong> are Eligible </li>
-                        <li>Income Should Be <strong>Less Than 1 Lakh</strong></li>
-                        
-                    </ul>
-                </div>
-                <div class="info"><p>INFORMATION</p>
-                    <ul>
-                        <li>College Registration Number  </li>
-                        <li>Caste/Income Certificate</li>
-                        <li>Fees Receipt of Institute</li>
-                        <li>Passport size Photo</li>
-                        <li>Goverment Verified Document (Aadhar card,Voter Id, etc)</li>
-                    </ul>
-                </div>
-                <div class="help">
-                    <p>HELPLINE</p>
-                    <ul>
-                        <li><strong>SOCIAL WELFARE:-</strong> 9008400010</li>
-                        <li><strong>DEPARTMENT OF MINORITY:-</strong>080-22535931</li>
-                        <li><strong>DEPARTMENT OF OBC:-</strong>8050770005</li>
-                    </ul>
-                    
-                </div>
-           </div>
-       </section>  
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    
+<?php include_once('includes/header.php');?>
+    
+    <div class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_2.jpg'); background-attachment:fixed;">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+          <div class="col-md-8 ftco-animate text-center">
+            <p class="breadcrumbs"><span class="mr-2"><a href="index.php">Home</a></span> <span>About</span></p>
+            <h1 class="mb-3 bread">About</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <section class="ftco-section">
+    	<div class="container">
+    		<div class="row d-flex">
+    			<div class="col-md-6 d-flex ftco-animate">
+    				<div class="img img-about align-self-stretch" style="background-image: url(images/bg_3.jpg); width: 100%;"></div>
+    			</div>
+          <?php
+$sql="SELECT * from tblpage where PageType='aboutus'";
+$query = $dbh -> prepare($sql);
+$query->execute();
+$results=$query->fetchAll(PDO::FETCH_OBJ);
+
+$cnt=1;
+if($query->rowCount() > 0)
+{
+foreach($results as $row)
+{               ?>
+    			<div class="col-md-6 pl-md-5 ftco-animate">
+    			
+    				<p><?php  echo $row->PageDescription;?>.</p>
+    			</div><?php $cnt=$cnt+1;}} ?>
+    		</div>
+    	</div>
+    </section>
+<?php include_once('includes/footer.php');?>
+    
   
-</body>
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/jquery.timepicker.min.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+    
+  </body>
 </html>
